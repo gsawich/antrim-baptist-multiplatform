@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 kotlin {
@@ -26,6 +27,16 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation("media.kamel:kamel-image:0.7.3")
+                implementation("io.ktor:ktor-client-core:2.3.4")
+                implementation("io.ktor:ktor-client-cio:2.3.4")
+                implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+                api("dev.icerock.moko:mvvm-core:0.16.1") // only ViewModel, EventsDispatcher, Dispatchers.UI
+                api("dev.icerock.moko:mvvm-compose:0.16.1") // api mvvm-core, getViewModel for Compose Multiplatfrom
+
+
             }
         }
         val androidMain by getting {
